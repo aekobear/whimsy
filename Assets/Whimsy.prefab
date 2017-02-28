@@ -51,6 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 344d1e610e472604eb4bd502ae32d393, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  p_map: {fileID: 114774276261638246, guid: c347daff13787eb498ecbc92e052b4e4, type: 2}
+  p_grid: {fileID: 114774276261638246, guid: c347daff13787eb498ecbc92e052b4e4, type: 2}
   p_windchime: {fileID: 114484751352234202, guid: 7ad6ccd1ce7ca824ca89138b66fd7c51,
     type: 2}

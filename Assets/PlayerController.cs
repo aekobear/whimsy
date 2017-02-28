@@ -9,6 +9,7 @@ using System;
 public class PlayerController : NessBehavior {
 
     public SpeechInput p_speechInput;
+    public Grid grid;
 
     private Player player;
     private SpeechInput speechInput;

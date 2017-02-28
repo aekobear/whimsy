@@ -5,7 +5,7 @@ using BeardedManStudios.Forge.Networking.Unity;
 
 public class Whimsy : MonoBehaviour {
 
-    public Map p_map;
+    public Grid p_grid;
     public Windchime p_windchime;
 
 	// Use this for initialization
@@ -18,8 +18,9 @@ public class Whimsy : MonoBehaviour {
 
         Whimsy.Link(Camera.main.transform, player, 0, 0);
 
-        Map map = Instantiate<Map>(p_map);
-        map.player = player.GetComponent<Player>();
+        Grid grid = Instantiate<Grid>(p_grid);
+        grid.player = player.GetComponent<Player>();
+        player.GetComponent<PlayerController>().grid = grid;
 
         Windchime windchime = Instantiate<Windchime>(p_windchime);
 	}

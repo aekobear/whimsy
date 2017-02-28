@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Map : MonoBehaviour {
+public class Grid : MonoBehaviour {
 
     public float seed;
     public int width;
@@ -10,12 +10,14 @@ public class Map : MonoBehaviour {
     public int cellWidth;
     public int cellheight;
 
+    public TileMap tilemap;
+    public ItemMap itemmap;
+
     public Player player;
     public GameObject p_tile;
 
-    public Sprite grass;
-
     private Tile[,] tiles;
+    private Item[,] items;
 
     private int world_x;
     private int world_y;
@@ -27,9 +29,6 @@ public class Map : MonoBehaviour {
 
         world_x = 0;
         world_y = 0;
-
-        perlinSeed = 0.012f;
-        
 
         tiles = new Tile[width*2, height*2];
 
@@ -63,29 +62,17 @@ public class Map : MonoBehaviour {
         transform.position = new Vector2(player.transform.position.x - xOffset, player.transform.position.y - yOffset);
 
         foreach (Tile tile in EachTile()){
-            float perlinNumber = Mathf.PerlinNoise(perlinSeed * (tile.vx + world_x), perlinSeed * (tile.vy + world_y));
-            perlinNumber = (int)(perlinNumber * 10);
-            float randomNumber = RandomNoise(tile.vx + world_x, tile.vy + world_y);
-            if ((perlinNumber % 2 == 0 && randomNumber > 0.3f) || randomNumber < 0.1f)
+            tile.render.sprite = tilemap.TileAt(tile.vx + world_x, tile.vy + world_y);
+            Item p_item = itemmap.ItemAt(tile.vx + world_x, tile.vy + world_y);
+            if(p_item != null)
             {
-                tile.render.sprite = grass;
-            }
-            else
-            {
-                tile.render.sprite = null;
+                Item item = Instantiate<Item>(p_item);
+                item.transform.position = tile.transform.position;
+
             }
         }
 
 	}
-
-    private float RandomNoise(float x, float y)
-    {
-        Random.InitState((int)(4223 * x));
-        float a = Random.Range(0f, 1f);
-        Random.InitState((int)(3229f * y));
-        float b = Random.Range(0f, 1f);
-        return a * b;
-    }
 
     public IEnumerable<Tile> EachTile()
     {
