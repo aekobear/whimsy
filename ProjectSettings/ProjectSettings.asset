@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  productGUID: 87bcf84c881b36a49a9a1983b2dafc35
+  productGUID: f3fbc3efd37d9f34aa434b656cf9ed9e
   AndroidProfiler: 0
   defaultScreenOrientation: 4
   targetDevice: 2
@@ -418,7 +418,7 @@ PlayerSettings:
   tizenGPSPermissions: 0
   tizenMicrophonePermissions: 0
   tizenDeploymentTarget: 
-  tizenDeploymentTargetType: 0
+  tizenDeploymentTargetType: -724712452
   tizenMinOSVersion: 0
   n3dsUseExtSaveData: 0
   n3dsCompressStaticMem: 1
@@ -460,13 +460,8 @@ PlayerSettings:
   XboxOneAllowedProductIds: []
   XboxOnePersistentLocalStorageSize: 0
   vrEditorSettings: {}
-  cloudServicesEnabled:
-    Build: 0
-    Collab: 0
-    ErrorHub: 0
-    Hub: 0
-    UNet: 1
-  cloudProjectId: 2260bb80-d16c-4f69-bde7-fb4d6d6e226a
-  projectName: Whimsy
-  organizationId: matthew-canestraro
+  cloudServicesEnabled: {}
+  cloudProjectId: 
+  projectName: 
+  organizationId: 
   cloudEnabled: 0

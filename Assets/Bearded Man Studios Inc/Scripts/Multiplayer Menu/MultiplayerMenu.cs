@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class MultiplayerMenu : MonoBehaviour
 {
+    public bool debug;
     public Text userName;
     public Text password;
     public string serverUrl = "whimsy.kokuma.net";
@@ -72,24 +73,32 @@ public class MultiplayerMenu : MonoBehaviour
 
 		NetWorker client;
 
-        Debug.Log("searching for official server via whimsyweb...");
-        float timeout = 30f;
-        WWW whimsyWeb = new WWW(serverUrl);
         string ipAddress;
-        while (!whimsyWeb.isDone || timeout > 0)
-        {
-            timeout -= Time.deltaTime;
-        }
 
-        if (whimsyWeb.isDone)
+        if (debug)
         {
-            Debug.Log("server found! " + whimsyWeb.text);
-            ipAddress = whimsyWeb.text;
+            ipAddress = "127.0.0.1";
         }
         else
         {
-            Debug.Log("could not connect to whimsyweb :c");
-            return;
+            Debug.Log("searching for official server via whimsyweb...");
+            float timeout = 30f;
+            WWW whimsyWeb = new WWW(serverUrl);
+            while (!whimsyWeb.isDone || timeout > 0)
+            {
+                timeout -= Time.deltaTime;
+            }
+
+            if (whimsyWeb.isDone)
+            {
+                Debug.Log("server found! " + whimsyWeb.text);
+                ipAddress = whimsyWeb.text;
+            }
+            else
+            {
+                Debug.Log("could not connect to whimsyweb :c");
+                return;
+            }
         }
 		if (useTCP)
 		{
