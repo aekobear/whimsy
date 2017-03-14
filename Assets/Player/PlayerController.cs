@@ -88,30 +88,33 @@ public class PlayerController : NessBehavior {
     public override void Take(RpcArgs args)
     {
         held = grid.Take(args.GetNext<Vector2>());
-        Whimsy.Link(held.transform, this.transform, 0, 1.50f);
-        Debug.Log("taking " + held);
+        if(held != null)
+        {
+            Whimsy.Link(held.transform, this.transform, 0, 1.50f);
+        }
     }
 
     public override void Place(RpcArgs args)
     {
         Whimsy.Unlink(held.transform);
-        grid.Place(args.GetNext<Vector2>(), held);
-        Debug.Log("placing " + held);
-        held = null;
+        if(grid.Place(args.GetNext<Vector2>(), held))
+        {
+            held = null;
+        }
     }
 
     public override void Interact(RpcArgs args)
     {
         if(held != null)
         {
-            held.Interact(grid, args.GetNext<Vector2>());
+            held.OnInteract(grid, args.GetNext<Vector2>());
         }
         else
         {
             Item item = grid.ItemAt(args.GetNext<Vector2>());
             if(item != null)
             {
-                item.Interact();
+                item.OnInteract();
             }
         }
     }

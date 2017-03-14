@@ -8,6 +8,8 @@ public class Player : MonoBehaviour {
 
     private bool walking;
     private Vector2 destination;
+    private Rigidbody2D body;
+    private SpriteRenderer sprite;
 
     private Animator animator;
 
@@ -16,6 +18,8 @@ public class Player : MonoBehaviour {
         walking = false;
 
         animator = GetComponent<Animator>();
+        body = GetComponent<Rigidbody2D>();
+        sprite = GetComponent<SpriteRenderer>();
 	}
 	
 	// Update is called once per frame
@@ -23,15 +27,20 @@ public class Player : MonoBehaviour {
 		
 	}
 
+    void LateUpdate()
+    {
+        sprite.sortingOrder = (int)Camera.main.WorldToScreenPoint(sprite.bounds.min).y * -1;
+    }
+
     void FixedUpdate()
     {
         if (walking)
         {
-            transform.position = Vector2.Lerp(transform.position, destination, speed / Vector2.Distance(transform.position, destination));
-            if (destination == (Vector2)transform.position)
+            if ((destination - (Vector2)transform.position).magnitude < 0.1f)
             {
                 walking = false;
                 animator.speed = 0;
+                body.velocity = Vector2.zero;
             }
         }
     }
@@ -51,6 +60,7 @@ public class Player : MonoBehaviour {
             transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
         animator.speed = 1;
+        body.velocity = (Vector2)(Quaternion.Euler(0, 0, animator.GetFloat("direction")) * Vector2.left * speed);
     }
 
     public static float AngleInRad(Vector2 vec1, Vector2 vec2)

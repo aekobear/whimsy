@@ -47,20 +47,46 @@ public class Grid : MonoBehaviour {
         }
 
     }
+
+    public Item Replace(Vector2 target, Item item)
+    {
+        Item old = Take(target);
+        if(!Place(target, item))
+        {
+            Place(target, old);
+            return item;
+        }
+        return old;
+    }
    
-    public void Place(Vector2 target, Item item)
+    public bool Place(Vector2 target, Item item)
     {
         int x = Mathf.RoundToInt(target.x);
         int y = Mathf.FloorToInt(target.y);
         item.transform.position = new Vector2(x, y);
-        var success = itemMap.Add(x, y, item);
+        if (itemMap.Add(x, y, item))
+        {
+            if(!item.OnPlace(this, target))
+            {
+                itemMap.Take(x, y);
+                return false;
+            }
+            return true;
+        }
+        return false;
     }
 
     public Item Take(Vector2 target)
     {
         int x = Mathf.RoundToInt(target.x);
         int y = Mathf.FloorToInt(target.y);
-        return itemMap.Take(x, y);
+        Item item = itemMap.Take(x, y);
+        if (!item.OnTake(this))
+        {
+            itemMap.Add(x, y, item);
+            return null;
+        }
+        return item;
     }
 
     public Item ItemAt(Vector2 target)

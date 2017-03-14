@@ -104,10 +104,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c64a8b92e0842c84d99aecce2be2b6e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scale: 100000
+  secondsInHour: 3600
+  hoursInDay: 24
+  daysInMonth: 30
+  monthsInYear: 12
+  secondRatio: 10000
   maxDarkness: 0.75
-  time: 0
-  day: 24
   dark: 0
 --- !u!114 &114291080379103666
 MonoBehaviour:

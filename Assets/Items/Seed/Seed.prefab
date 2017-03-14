@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4148704573025294}
   - component: {fileID: 212503581436146736}
-  - component: {fileID: 114703894583870454}
+  - component: {fileID: 114316631817432984}
   m_Layer: 0
   m_Name: Seed
   m_TagString: Untagged
@@ -41,7 +41,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114703894583870454
+--- !u!114 &114316631817432984
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -49,9 +49,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1419741629287822}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4387094254c962d4ba6cc7b55c6dcb44, type: 3}
+  m_Script: {fileID: 11500000, guid: 2939e479bdfb5904088e909c03d033af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  p_plant: {fileID: 114200499223788140, guid: f6ad7627f8605eb47b04e3357eb60001, type: 2}
+  germinationTime: 1
 --- !u!212 &212503581436146736
 SpriteRenderer:
   m_ObjectHideFlags: 1

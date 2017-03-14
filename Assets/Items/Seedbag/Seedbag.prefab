@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e464c21f80610e24f888168759a224ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  p_seed: {fileID: 114703894583870454, guid: b63866d474d7e9044a45d2dc2d86f1d3, type: 2}
+  p_seed: {fileID: 114316631817432984, guid: b63866d474d7e9044a45d2dc2d86f1d3, type: 2}
 --- !u!212 &212746719344884812
 SpriteRenderer:
   m_ObjectHideFlags: 1

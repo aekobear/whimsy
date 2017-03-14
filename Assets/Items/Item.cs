@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : MonoBehaviour, IPoint {
+public abstract class Item : MonoBehaviour, IPoint {
 
     public int X {
         set { transform.position = new Vector2((int)value, (int)transform.position.y); }
@@ -15,13 +15,29 @@ public class Item : MonoBehaviour, IPoint {
         get { return (int)transform.position.y; }
     }
 
-    public virtual void Interact()
-    {
+    private SpriteRenderer sprite;
 
+    void Start()
+    {
+        sprite = GetComponent<SpriteRenderer>();
     }
 
-    public virtual void Interact(Grid grid, Vector2 target)
+    void LateUpdate()
     {
+        sprite.sortingOrder = (int)Camera.main.WorldToScreenPoint(sprite.bounds.min).y * -1;
+    }
 
+    public virtual void OnInteract() { }
+
+    public virtual void OnInteract(Grid grid, Vector2 target) { }
+
+    public virtual bool OnPlace(Grid grid, Vector2 target)
+    {
+        return true;
+    }
+
+    public virtual bool OnTake(Grid grid)
+    {
+        return true;
     }
 }

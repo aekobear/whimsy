@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4624569886633782}
   - component: {fileID: 114730809871549366}
+  - component: {fileID: 114707698342599512}
   m_Layer: 0
   m_Name: Whimsy
   m_TagString: Untagged
@@ -40,6 +41,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114707698342599512
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1705902313263516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c64a8b92e0842c84d99aecce2be2b6e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  secondsInHour: 3600
+  hoursInDay: 24
+  daysInMonth: 30
+  monthsInYear: 12
+  secondRatio: 1000
+  maxDarkness: 0.6
+  dark: 0
 --- !u!114 &114730809871549366
 MonoBehaviour:
   m_ObjectHideFlags: 1
